@@ -1,0 +1,25 @@
+name: Sync Framer to GitHub
+on:
+  workflow_dispatch:
+
+jobs:
+  download-framer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Download HTML
+        run: |
+          # REEMPLAZA EL LINK DE ABAJO POR EL TUYO DE FRAMER
+          curl -L "https://encouraging-finance-094627.framer.app/" > index.html
+          
+      - name: Commit and Push
+        run: |
+          git config --global user.name "FramerSyncBot"
+          git config --global user.email "bot@framer.com"
+          git add index.html
+          git commit -m "Actualización visual desde Framer" || exit 0
+          git push
