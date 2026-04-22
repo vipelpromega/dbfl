@@ -1,8 +1,6 @@
 name: Sync Framer to GitHub
 on:
-  workflow_dispatch: # Esto permite activarlo manualmente con un botón
-  schedule:
-    - cron: '0 * * * *' # Se revisará automáticamente cada hora
+  workflow_dispatch:
 
 jobs:
   download-framer:
@@ -15,7 +13,7 @@ jobs:
 
       - name: Download HTML
         run: |
-          # REEMPLAZA LA URL DE ABAJO POR TU LINK DE FRAMER
+          # REEMPLAZA EL LINK DE ABAJO POR EL TUYO DE FRAMER
           curl -L "https://encouraging-finance-094627.framer.app/" > index.html
           
       - name: Commit and Push
