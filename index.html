@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Base de Datos</title>
+    <title>Base de Datos - Live</title>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* Reset total para evitar espacios en blanco */
         * {
             margin: 0;
             padding: 0;
@@ -17,74 +16,65 @@
             background-color: #07070D;
             width: 100vw;
             height: 100vh;
-            overflow: hidden; /* Evita que el brillo cree barras de scroll */
+            overflow: hidden; /* Evita que el brillo gigante cree scrollbars */
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'Instrument Sans', sans-serif;
         }
 
-        /* Contenedor principal que imita tu Frame de Figma */
-        .canvas {
-            position: relative;
-            width: 100%;
-            max-width: 1440px; /* Ancho de tu diseño */
-            height: 1024px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* El Texto: Usamos valores exactos de tu diseño */
-        .texto-principal {
-            position: relative;
-            z-index: 10;
-            width: 973px;
-            text-align: center;
-            color: #FF8C00;
-            font-size: 48px;
-            font-weight: 700;
-            line-height: 1.2;
-            text-transform: uppercase;
-        }
-
-        /* El Brillo: Recreación exacta del degradado de Figma */
-        .glow {
+        /* Contenedor de la luz de fondo */
+        .background-glow {
             position: absolute;
-            /* Posicionamiento exacto basado en tu código */
-            width: 1827px;
-            height: 1827px;
-            left: 50%; /* Centramos el origen */
-            top: 40%; 
-            transform: translate(-10%, -50%); /* Ajuste para que quede a la derecha como en tu diseño */
+            width: 2230px;
+            height: 2230px;
+            /* Lo posicionamos para que la luz venga desde el centro-derecha */
+            right: -500px; 
+            top: -500px;
             z-index: 1;
             background: radial-gradient(
-                50% 50% at 50% 50%, 
-                rgba(255, 8, 0, 0.36) 0%, 
-                rgba(255, 91, 0, 0.18) 20%, 
+                ellipse 50% 50% at 50% 50%, 
+                rgba(255, 8, 0, 0.39) 0%, 
+                rgba(255, 91, 0, 0.25) 0%, 
                 rgba(255, 46, 0, 0.09) 49%, 
                 rgba(255, 0, 0, 0) 100%
             );
-            pointer-events: none;
+            pointer-events: none; /* Para que no interfiera con clics */
         }
 
-        /* Ajuste para tu pantalla de 1280x800 */
+        /* Contenedor del contenido */
+        .content {
+            position: relative;
+            z-index: 10; /* Por encima de la luz */
+            text-align: center;
+            padding: 20px;
+        }
+
+        .texto-principal {
+            color: #FF8C00;
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.1;
+            max-width: 900px;
+            text-transform: uppercase;
+        }
+
+        /* Ajuste para tu pantalla 1280x800 */
         @media (max-width: 1300px) {
             .texto-principal {
-                font-size: 36px;
-                width: 80%;
+                font-size: 38px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="canvas">
-        <div class="texto-principal">
+    <div class="background-glow"></div>
+
+    <div class="content">
+        <h1 class="texto-principal">
             MÁS DE {nmb_info} INFORMACIÓN DE USUARIOS EN<br/>NUESTRA BASE DE DATOS.
-        </div>
-        
-        <div class="glow"></div>
+        </h1>
     </div>
 
 </body>
