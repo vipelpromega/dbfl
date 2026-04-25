@@ -83,6 +83,28 @@
     
     <!-- End of headEnd -->
 </head>
+	<script>
+    // Función para borrar el rastro de Framer
+    function removeFramerBadge() {
+        // Busca por el ID común, por la clase y por el atributo que me pasaste
+        const selectors = [
+            '#__framer-badge-container',
+            '.framer-badge',
+            'div[data-framer-name="Badge"]',
+            'div[style*="fixed"][style*="z-index: 999999"]'
+        ];
+        
+        selectors.forEach(selector => {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(el => el.remove());
+        });
+    }
+
+    // Se ejecuta al cargar y cada vez que algo cambie en la pantalla
+    const observer = new MutationObserver(removeFramerBadge);
+    observer.observe(document.body, { childList: true, subtree: true });
+    removeFramerBadge();
+	</script>
 <body>
 	<!-- Start of bodyStart -->
     
